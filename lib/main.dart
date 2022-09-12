@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ui/products/products_manager.dart';
+import 'ui/products/products_manager.dart'; 
 import 'ui/products/product_detail_screen.dart';
 
 void main() {
@@ -31,16 +31,16 @@ class MyApp extends StatelessWidget {
 
         //primarySwatch: Colors.blue,
       ),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: Container(
-        color: Colors.green,
-      ),
-
-      // home: SafeArea(
-      //   child: ProductDetailScreen(
-      //     ProductsManager().items[0],
-      //   ),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: Container(
+      //   color: Colors.green,
       // ),
+
+      home: SafeArea(
+        child: ProductDetailScreen(
+          ProductsManager().items[0], 
+        ), 
+      ),
 
     );
   }
@@ -128,7 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
