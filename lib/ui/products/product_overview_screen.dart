@@ -3,6 +3,8 @@ import 'package:myshop/ui/cart/cart_screen.dart';
 
 import 'product_grid.dart';
 import '../shared/app_drawer.dart';
+import '../cart/cart_manager.dart';
+import 'top_right_badge.dart';
 
 enum FilterOptions { favorites, all}
 
@@ -32,15 +34,27 @@ class _ProductsOverviewScreenState extends State<ProductOverviewScreen> {
   }
 
   Widget buildShoppingCartIcon() {
-    return IconButton(
-      icon: const Icon(
-        Icons.shopping_cart,
+    // return IconButton(
+    //   icon: const Icon(
+    //     Icons.shopping_cart,
+    //   ),
+    //   onPressed: () {
+    //     // print('Go to cart screen');
+    //     Navigator.of(context).pushNamed(CartScreen.routeName);
+    //   },
+    // );
+    return TopRightBadge(
+      data: CartManager().productCount,
+      child: IconButton(
+        icon: const Icon(
+          Icons.shopping_cart,
+        ),
+        onPressed: () {
+          Navigator.of(context).pushNamed(CartScreen.routeName);
+        },
       ),
-      onPressed: () {
-        // print('Go to cart screen');
-        Navigator.of(context).pushNamed(CartScreen.routeName);
-      },
     );
+
   }
 
   Widget buildProductFilterMenu() {
