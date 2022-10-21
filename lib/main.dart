@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/ui/products/edit_product_screen.dart';
 import 'package:myshop/ui/screen.dart';
 import 'ui/products/products_manager.dart'; 
 import 'ui/products/product_detail_screen.dart';
@@ -7,6 +8,7 @@ import 'ui/products/user_products_screen.dart';
 import 'ui/cart/cart_screen.dart';
 import 'ui/orders/orders_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
 
 
 void main() {
@@ -95,7 +97,34 @@ class MyApp extends StatelessWidget {
               },
             );
           }
+
+          if (settings.name == EditProductScreen.routeName) {
+            final productId = settings.arguments as String?;
+            return MaterialPageRoute(
+              builder: (ctx) {
+                return EditProductScreen(
+                  productId != null
+                  ? ctx.read<ProductsManager>().findById(productId)
+                  : null,
+                );
+              },
+            );
+          }
           return null;
+
+          // if (settings.name == EditProductScreen.routeName) {
+          //   final productId = settings.arguments as String?;
+          //   return MaterialPageRoute(
+          //     builder: (ctx) {
+          //       return EditProductScreen(
+          //         productId != null
+          //         ? ctx.read<ProductsManager>().findById(productId)
+          //         : null,
+          //       );
+          //     },
+          //   );
+          // }
+          // return null;
         },
       ),
 
