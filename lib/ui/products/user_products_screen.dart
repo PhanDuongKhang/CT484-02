@@ -1,7 +1,7 @@
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:myshop/models/product.dart';
+// import 'package:myshop/models/product.dart';
 import 'package:myshop/ui/products/edit_product_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class UserProductsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productsManager = ProductsManager();
+    // final productsManager = ProductsManager();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Products'),
