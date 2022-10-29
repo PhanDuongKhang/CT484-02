@@ -102,10 +102,10 @@ class ProductsManager with ChangeNotifier {
     //   }
     // }
 
-    void toggleFavoriteStatus(Product product) {
-      final savedStatus = product.isFavorite;
-      product.isFavorite = !savedStatus;
-    }
+    // void toggleFavoriteStatus(Product product) {
+    //   final savedStatus = product.isFavorite;
+    //   product.isFavorite = !savedStatus;
+    // }
 
     // void deleteProduct(String id) {
     //   final index = _items.indexWhere((item) => item.id == id);
@@ -127,6 +127,16 @@ class ProductsManager with ChangeNotifier {
     }
   }
 
+
+  Future<void> toggleFavoriteStatus(Product product) async {
+    final savedStatus = product.isFavorite;
+    product.isFavorite = !savedStatus;
+
+    if (!await _productsService.saveFavoritesStatus(product)) {
+      product.isFavorite = savedStatus;
+    }
+  }
+
   Future<void> deleteProduct(String id) async {
     final index = _items.indexWhere((item) => item.id == id);
     Product? existingProduct = _items[index];
@@ -138,4 +148,6 @@ class ProductsManager with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  
 }
